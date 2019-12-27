@@ -1,19 +1,26 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
 import router from 'umi/router';
-import { Layout } from 'antd';
+import { Layout, Icon } from 'antd';
 import styles from './index.less';
-//import Logo from './logo';
+import Logo from './logo';
 import FooterView from './Footer';
+import MainMenu from './menus';
 import ContentHeader from './header';
-const { Header, Content } = Layout;
+
+const { Header, Sider, Content } = Layout;
 
 class Platform extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            // 侧边栏状态
+            collapsed: false,
             // 系统主题
             theme: 'light',
+            // 菜单主题
+            menuTheme: 'dark',
+            defaultKey: 'table'
         };
     };
 
@@ -35,6 +42,12 @@ class Platform extends PureComponent {
 
     }
 
+    toggle = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
+    };
+
     handleSetting = (param) => {
         const { dispatch } = this.props;
         const { key, state } = param;
@@ -50,11 +63,24 @@ class Platform extends PureComponent {
     
 
     render() {
+        const { location } = this.props;
+        const { defaultKey } = this.state;
         return (
             <Layout className={styles.wrap}>
+                <Sider trigger={null} collapsible collapsed={this.state.collapsed} >
+                    {/* LOGO */}
+                    <Logo collapsed={this.state.collapsed} />
+                    <MainMenu location={location} defaultKey={defaultKey} />
+                </Sider>
                 <Layout className={styles.container}>
                     <Header style={{ background: '#fff', padding: 0 }} className={styles.contentHeader}>
-                        <div></div>
+                        <div style={{ width: 100 }}>
+                            <Icon
+                                className={styles.trigger}
+                                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                                onClick={this.toggle}
+                            />
+                        </div>
                         <ContentHeader handleSetting={this.handleSetting}/>
                     </Header>
                     <Content
@@ -75,8 +101,9 @@ class Platform extends PureComponent {
     }
 }
 
-export default connect(({ global }) => {
+export default connect(({ global, menu, }) => {
     return {
-        ...global
+        ...global,
+        menu
     };
 })(Platform);
