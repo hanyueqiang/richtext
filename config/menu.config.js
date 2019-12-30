@@ -5,18 +5,18 @@ export default [
     key: "richtext",
     icon: "edit"
   },
-  {
-    title: "模块管理",
-    link: "/module",
-    key: "module",
-    icon: "bars"
-  },
-  {
-    title: "统计分析",
-    link: "/analysis",
-    key: "analysis",
-    icon: "line-chart"
-  },
+  // {
+  //   title: "模块管理",
+  //   link: "/module",
+  //   key: "module",
+  //   icon: "bars"
+  // },
+  // {
+  //   title: "统计分析",
+  //   link: "/analysis",
+  //   key: "analysis",
+  //   icon: "line-chart"
+  // },
   // {
   //   title: "practice",
   //   key: "practice",
