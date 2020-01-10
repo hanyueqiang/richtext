@@ -1,5 +1,8 @@
 import request from './umiRequest';
+import { getCanEating, queryKeysByPath } from './_';
 
 export {
-  request
+  request,
+  getCanEating,
+  queryKeysByPath
 };

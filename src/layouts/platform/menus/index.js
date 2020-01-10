@@ -1,16 +1,16 @@
 
 import React, { PureComponent } from 'react';
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 import { Link } from 'umi';
 import { connect } from 'dva';
-import { queryKeysByPath } from './_';
+import { queryKeysByPath } from '@utils';
 
 const { SubMenu, Item } = Menu;
 
 class MainMenu extends PureComponent {
   static defaultProps = {
     mode: "inline",
-    menuTheme: 'dark'
+    menuTheme: 'light'
   };
   renderMenu(data = []) {
     const rows = Array.isArray(data) ? data : data.rows;
@@ -18,14 +18,14 @@ class MainMenu extends PureComponent {
     const { mode } = this.props;
     return rows.map((row) => {
       if (row === undefined) return false;
-      const { title: name, link = "", key = link, query, icon = "bars", children, ...restState } = row;
+      const { title: name, link = "", key = link, query, children, ...restState } = row;
       if (children && children.length > 0) {
         const subMenu = self.renderMenu(children);
         return (
           <SubMenu
             key={key}
             text={name}
-            title={<span><Icon type={icon} />{mode === 'inline' ? <span>{name}</span> : null}</span>}
+            title={<span>{mode === 'inline' ? <span>{name}</span> : null}</span>}
           >
             {subMenu}
           </SubMenu>
@@ -37,7 +37,7 @@ class MainMenu extends PureComponent {
             text={name}
           >
             <Link to={{ pathname: link, query, state: { ...restState, key } }}>
-              <Icon type={icon} />
+              {/* <Icon type={icon} /> */}
               <span>{name}</span>
             </Link>
           </Item>
@@ -49,13 +49,13 @@ class MainMenu extends PureComponent {
     const { location, defaultKey, menuTheme, menusData, mode } = this.props;
     const { pathname } = location;
     const menus = this.renderMenu(menusData);
-    const { key } = queryKeysByPath(pathname, menusData);
+    const key= queryKeysByPath(pathname, menusData);
     return (
       <Menu
         selectedKeys={[key || defaultKey]}
+        defaultOpenKeys={['knowledge']}
         mode={mode}
         theme={menuTheme}
-        style={{ overflowY: 'auto', height: "calc(100vh - 70px)" }}
         className="progressbar"
       >
         {menus}

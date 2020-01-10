@@ -1,7 +1,15 @@
-import { logout, getSysInfo, getMessage } from './global';
+import { logout, getSysInfo, getMessage, uploadFile } from './global';
+import { getEatingList, getCategoryList, saveEatingFetch, deleteEating, getEditInfo, saveEatingAddFetch } from './eating';
 
 export {
   logout,
   getSysInfo,
-  getMessage
+  getMessage,
+  getEatingList,
+  uploadFile,
+  getCategoryList,
+  saveEatingFetch,
+  deleteEating,
+  getEditInfo,
+  saveEatingAddFetch
 };

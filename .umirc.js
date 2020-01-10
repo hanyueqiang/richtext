@@ -4,6 +4,7 @@ import { resolve } from "path";
 export default {
   treeShaking: true,
   hash: true, // 生成hash文件名
+  targets: { ie: 11 },
   // routes: [
   //   {
   //     path: '/',
@@ -19,7 +20,7 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: { webpackChunkName: true },
-      title: 'app-template',
+      title: '智慧病房运营配置平台',
       dll: true,
       routes: {
         exclude: [
@@ -37,10 +38,11 @@ export default {
     '@utils': resolve(__dirname, "./src/utils"),
   },
   proxy: {
-    "/api": {
-      target: "",
+    "/smart_ward_admin": {
+      target: "http://10.20.222.231:9032",
+      target1: "http://10.200.16.120:9032",
       changeOrigin: true,
-      pathRewrite: { "^/api": "" }
+      // pathRewrite: { "^/api": "" }
     }
   },
 }

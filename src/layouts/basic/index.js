@@ -14,9 +14,9 @@ class Index extends Component {
                 <Content className={styles.content}>
                     {children}
                 </Content>
-                <Footer>
+                {/* <Footer>
                     <MyFooter />
-                </Footer>
+                </Footer> */}
             </Layout>
         );
     }

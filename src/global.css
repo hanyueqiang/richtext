@@ -6,7 +6,50 @@ body {
   margin: 0;
 }
 .braft-component {
-  margin-bottom: 30px;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
+}
+
+.smart-highlight {
+  color: #1890ff;
+  cursor: pointer;
+}
+.smart-highlight:hover {
+  color: #40a9ff;
+}
+.smart-upload-img {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #eee;
+  text-align: center;
+  line-height: 120px;
+  font-size: 18px;
+}
+.smart-upload-img input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.smart-upload-del {
+  position: absolute;
+  color: red;
+  right: -16px;
+  top: -16px;
+  font-size: 21px;
+  cursor: pointer;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.avatar-uploader > .ant-upload {
+  width: 128px;
+  height: 128px;
+}
+.nowrap {
+  white-space: nowrap;
 }

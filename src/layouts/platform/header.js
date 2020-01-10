@@ -49,7 +49,7 @@ class Index extends PureComponent {
 			</Menu.Item>
 		</Menu>);
 		return (
-			<div style={{ width: 200, textAlign: 'right', height: '100%', paddingRight: 20 }}>
+			<div style={{ width: 200, color: '#fff', textAlign: 'right', height: '100%', paddingRight: 24 }}>
 				<Dropdown overlay={menu} placement="bottomRight">
 					<span>
 						<Icon type="user" />{userName}

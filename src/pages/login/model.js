@@ -10,22 +10,24 @@ export default {
     },
     effects: {
         *login({ payload }, { call, put }) {
-            const { password, ...rest } = payload;
-            const { status } = yield call(api.login, { password: password, ...rest });
-            if (status === 0) {
-                sessionStorage.setItem("isLogin", true);
-                yield put(routerRedux.push('/richtext'));
-            } else {
-                yield put({
-                    type: 'save',
-                    payload: {
-                        isError: true
-                    }
-                });
-                notification.error({
-                    message: '用户名或密码错误，请重新登录。',
-                });
-            }
+            sessionStorage.setItem("isLogin", true);
+            yield put(routerRedux.push('/knowledge/eating'));
+            // const { password, ...rest } = payload;
+            // const { status } = yield call(api.login, { password: password, ...rest });
+            // if (status === 0) {
+            //     sessionStorage.setItem("isLogin", true);
+            //     yield put(routerRedux.push('/knowledge/eating'));
+            // } else {
+            //     yield put({
+            //         type: 'save',
+            //         payload: {
+            //             isError: true
+            //         }
+            //     });
+            //     notification.error({
+            //         message: '用户名或密码错误，请重新登录。',
+            //     });
+            // }
         },
     },
 

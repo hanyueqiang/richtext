@@ -22,13 +22,16 @@ export default {
 
 	effects: {
 		*logout({ payload }, { call, put }) {
-			const { data, status } = yield call(api.logout, { ...payload });
-			const { message: msg } = data;
-			if (status === 0) {
-				message.success(msg || "退出系统");
-				sessionStorage.setItem('isLogin', false);
-				yield put(routerRedux.push('/login'));
-			}
+			message.success("退出系统");
+			sessionStorage.setItem('isLogin', false);
+			yield put(routerRedux.push('/login'));
+			// const { data, status } = yield call(api.logout, { ...payload });
+			// const { message: msg } = data;
+			// if (status === 0) {
+			// 	message.success(msg || "退出系统");
+			// 	sessionStorage.setItem('isLogin', false);
+			// 	yield put(routerRedux.push('/login'));
+			// }
 		},
 		*getSysInfo(_, { call, put }) {
 			const { data = {}, status } = yield call(api.getSysInfo, {});
